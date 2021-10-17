@@ -2,10 +2,11 @@ import { Controller } from "@hotwired/stimulus";
 import { get } from "@rails/request.js";
 
 export default class extends Controller {
+    static targets = ['lastPage']
+
     static values = {
         url: String,
         page: Number,
-        hasNextPage: Boolean,
     };
 
     initialize() {
@@ -19,7 +20,7 @@ export default class extends Controller {
     }
 
     scroll() {
-        if (this.scrollReachedEnd) {
+        if (this.scrollReachedEnd && !this.hasLastPageTarget) {
             this._fetchNewPage()
         }
     }
