@@ -1,0 +1,7 @@
+<%= turbo_stream.append "posts" do %>
+  <%= render @posts %>
+
+  <% if @posts.page(@page.to_i + 1).out_of_range? %>
+    <span class="hidden" data-pagination-target="lastPage"></span>
+  <% end %>
+<% end %>
