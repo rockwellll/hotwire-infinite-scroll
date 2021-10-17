@@ -1,8 +1,16 @@
 <div
-  id="posts"
   data-controller="pagination"
   data-pagination-url-value="<%= posts_url %> "
   data-pagination-page-value="<%= 2 %>"
-style="overflow-y: scroll">
-  <%= render @posts %>
+  data-pagination-scroll-value="false"
+  style="overflow-y: scroll">
+
+  <div id="posts">
+    <%= render @posts %>
+  </div>
+
+  <button data-action="click->pagination#paginate">
+    Load more
+  </button>
+
 </div>

@@ -14,6 +14,7 @@ export default class extends Controller {
     }
 
     connect() {
+        if(!this.scrollValue) return;
         document.addEventListener("scroll", this.scroll);
     }
 
@@ -32,6 +33,11 @@ export default class extends Controller {
         });
 
         this.pageValue +=1;
+    }
+
+    async paginate(e) {
+        await this._fetchNewPage();
+        e.target.blur();
     }
 
     get scrollReachedEnd() {
