@@ -1,6 +1,20 @@
 import { Controller } from "@hotwired/stimulus";
 import { get } from "@rails/request.js";
 
+// attaches an infinite-scroll listener on either a specific scrollable element or
+// the entire window(<body>)
+
+// if you want to attach the listener to the window, you can do this
+// data-pagination-attach-to-body-value="true", then the listener will be attached on the window
+// rather than the element.
+
+// If you omit this option, the controller will attach the event listener-
+// on the element that has the declaration
+//<element data-controller="pagination">
+
+// make sure to return a <element data-pagination-target="lastPage" /> in the turbo stream response
+// to indicate that there are no more pages. Thus, no more requests being sent.
+
 export default class extends Controller {
     static targets = ['lastPage']
 
